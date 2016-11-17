@@ -39,11 +39,15 @@ public class DisplayHoraYFecha
     
     public void setMomento(int nuevoMinuto, int nuevaHora, int nuevoDia, int nuevoMes, int nuevoAno)
     {
-        minutos.setValue(nuevoMinuto);
-        horas.setValue(nuevaHora);
-        dia.setValor(nuevoDia);
-        mes.setValor(nuevoMes);
-        ano.setValor(nuevoAno);
+        if (nuevaHora >= 0 && nuevaHora < 24 && nuevoMinuto >= 0 && nuevoMinuto < 60 && 
+        nuevoDia > 0 && nuevoDia < 31 && nuevoMes > 0 && nuevoMes < 13 && nuevoAno > 0 && nuevoAno < 100)
+        {
+            minutos.setValue(nuevoMinuto);
+            horas.setValue(nuevaHora);
+            dia.setValor(nuevoDia);
+            mes.setValor(nuevoMes);
+            ano.setValor(nuevoAno);
+        }
     }
     
     public String getMomento()
