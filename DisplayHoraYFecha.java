@@ -50,6 +50,41 @@ public class DisplayHoraYFecha
         }
     }
     
+    public void setMomento2 (int nuevoMinuto, int nuevaHora, int nuevoDia, int nuevoMes, int nuevoAno)
+    {
+        int contador = 0;
+        
+        if (nuevaHora >= 0 && nuevaHora < 24)
+        {
+            contador = contador + 1;
+        }
+        if(nuevoMinuto >= 0 && nuevoMinuto < 60)
+        {
+            contador = contador + 1;
+        }
+        if (nuevoDia > 0 && nuevoDia < 31)
+        {
+            contador = contador + 1;
+        }
+        if (nuevoMes > 0 && nuevoMes < 13)
+        {
+            contador = contador + 1;
+        }
+        if (nuevoAno > 0 && nuevoAno < 100)
+        {
+            contador = contador + 1;
+        }
+        
+        if (contador == 5)
+        {
+            minutos.setValue(nuevoMinuto);
+            horas.setValue(nuevaHora);
+            dia.setValor(nuevoDia);
+            mes.setValor(nuevoMes);
+            ano.setValor(nuevoAno);
+        }
+    }
+    
     public String getMomento()
     {
         return horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " " + dia.getValorDelDisplay() +
