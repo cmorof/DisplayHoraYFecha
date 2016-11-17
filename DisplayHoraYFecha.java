@@ -52,30 +52,30 @@ public class DisplayHoraYFecha
     
     public void setMomento2 (int nuevoMinuto, int nuevaHora, int nuevoDia, int nuevoMes, int nuevoAno)
     {
-        int contador = 0;
+        boolean seDebeCambiarElMomentoTemporal = true;
         
-        if (nuevaHora >= 0 && nuevaHora < 24)
+        if (nuevaHora < 0 || nuevaHora > 23)
         {
-            contador = contador + 1;
+            seDebeCambiarElMomentoTemporal = false;
         }
-        if(nuevoMinuto >= 0 && nuevoMinuto < 60)
+        if(nuevoMinuto < 0 || nuevoMinuto > 59)
         {
-            contador = contador + 1;
+            seDebeCambiarElMomentoTemporal = false;
         }
-        if (nuevoDia > 0 && nuevoDia < 31)
+        if (nuevoDia < 1 || nuevoDia > 30)
         {
-            contador = contador + 1;
+            seDebeCambiarElMomentoTemporal = false;
         }
-        if (nuevoMes > 0 && nuevoMes < 13)
+        if (nuevoMes < 1 || nuevoMes > 12)
         {
-            contador = contador + 1;
+            seDebeCambiarElMomentoTemporal = false;
         }
-        if (nuevoAno > 0 && nuevoAno < 100)
+        if (nuevoAno < 1 || nuevoAno > 99)
         {
-            contador = contador + 1;
+            seDebeCambiarElMomentoTemporal = false;
         }
         
-        if (contador == 5)
+        if (seDebeCambiarElMomentoTemporal == true)
         {
             minutos.setValue(nuevoMinuto);
             horas.setValue(nuevaHora);
