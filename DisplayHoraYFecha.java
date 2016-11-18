@@ -7,17 +7,16 @@ public class DisplayHoraYFecha
     private DisplayDosDigitos mes;
     private DisplayDosDigitos ano;
 	private boolean hora;
-	private boolean fecha;
-
-    public DisplayHoraYFecha(boolean hour, boolean date)
+    private boolean fecha;
+    
+    public DisplayHoraYFecha()
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
         dia = new DisplayDosDigitos(31);
         mes = new DisplayDosDigitos(13);
         ano = new DisplayDosDigitos(100);
-		hora = hour;
-		fecha = date;
+		
     }
 
     public void avanzarMomento()
@@ -89,20 +88,22 @@ public class DisplayHoraYFecha
         }
     }
     
-    public String getMomento()
+    public String getMomento(boolean hour, boolean date)
     {
+        hora = hour;
+		fecha = date;
         String momento;
         
-		if (hora == true && fecha == true)
+		if (hora && fecha)
 		{
         	momento = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " " + dia.getValorDelDisplay() +
         	"/" + mes.getValorDelDisplay() + "/" + ano.getValorDelDisplay();
     	}
-		else if (hora == true)
+		else if (hora && !fecha)
 		{
 			momento = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
 		}
-		else if (fecha == true)
+		else if (!hora && fecha)
 		{
 			momento = dia.getValorDelDisplay() + "/" + mes.getValorDelDisplay() + "/" + ano.getValorDelDisplay();
 		}
